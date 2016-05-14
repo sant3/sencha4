@@ -3,8 +3,8 @@ FROM centos:centos6
 MAINTAINER Sante Paciello <essebyte@gmail.com>
 
 #Config vars
-ENV JAVA_VER=8u91
-ENV JAVA_VER_BUILD=b14
+ENV JAVA_VER=7u80
+ENV JAVA_VER_BUILD=b15
 ENV ANT_VER=1.9.3
 ENV RUBY_MAJOR=1.9
 ENV RUBY_VERSION=1.9.3-p550
@@ -26,7 +26,7 @@ RUN yum -y update; yum -y install \
 	bzip2 autoconf automake libtool bison iconv-devel \
 	&& yum clean all
 
-# Install Oracle Java8 - BIN
+# Install Oracle Java7 - BIN
 RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" \
 	http://download.oracle.com/otn-pub/java/jdk/${JAVA_VER}-${JAVA_VER_BUILD}/jdk-${JAVA_VER}-linux-x64.tar.gz && \
 	tar -xvf jdk-${JAVA_VER}-linux-x64.tar.gz && \
