@@ -14,4 +14,4 @@ These software are all installed under /opt/ folder
 
 #How to pull
 
-* docker pull sant3/sencha4:vjdk7
+* docker pull sant3/sencha4:jdk8
