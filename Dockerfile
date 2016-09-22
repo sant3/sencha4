@@ -20,13 +20,10 @@ ENV SENCHA_HOME=/opt/Sencha/Cmd
 ENV PATH $PATH:${JAVA_HOME}/bin:${SENCHA_HOME}
 
 RUN yum -y update; yum -y install \
-	git unzip wget telnet curl vim tar \
-	gcc-c++ patch readline readline-devel zlib zlib-devel \
-	libyaml-devel libffi-devel openssl-devel make \
-	bzip2 autoconf automake libtool bison iconv-devel \
-	&& yum clean all
+	unzip wget curl tar git \
+	openssl-devel bzip2 && yum clean all
 
-# Install Oracle Java7 - BIN
+# Install Oracle Java8 - BIN
 RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" \
 	http://download.oracle.com/otn-pub/java/jdk/${JAVA_VER}-${JAVA_VER_BUILD}/jdk-${JAVA_VER}-linux-x64.tar.gz && \
 	tar -xvf jdk-${JAVA_VER}-linux-x64.tar.gz && \
