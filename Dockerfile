@@ -38,7 +38,7 @@ RUN wget http://archive.apache.org/dist/ant/binaries/apache-ant-${ANT_VER}-bin.z
 
 RUN yum -y install gcc gcc-c++ make
 
-RUN  wget http://10.49.2.235/tarfiles/curl-7.57.0.tar.gz && \
+RUN  wget https://curl.haxx.se/download/curl-7.57.0.tar.gz && \
         tar -xvf curl-7.57.0.tar.gz && \
         cd curl-7.57.0 && \
         ./configure && \
