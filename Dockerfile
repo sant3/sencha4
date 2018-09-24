@@ -26,18 +26,30 @@ RUN yum -y update; yum -y install \
 	openssl-devel bzip2 && yum clean all
 
 # Install Oracle Java8 - BIN
-RUN wget http://10.49.2.235/tarfiles/jdk-8u172-linux-x64.tar.gz && \
-	tar -xvf jdk-${JAVA_VER}-linux-x64.tar.gz && \
-	rm jdk*.tar.gz && \
-	mv jdk* ${JAVA_HOME}
+#RUN wget http://10.49.2.235/tarfiles/jdk-8u172-linux-x64.tar.gz && \
+#	tar -xvf jdk-${JAVA_VER}-linux-x64.tar.gz && \
+	#rm jdk*.tar.gz && \
+	#mv jdk* ${JAVA_HOME}
 
 #Install ANT
 RUN wget http://archive.apache.org/dist/ant/binaries/apache-ant-${ANT_VER}-bin.zip; \
 	unzip apache-ant-${ANT_VER}-bin.zip; mv apache-ant-${ANT_VER}/ ${ANT_HOME}; ln -s ${ANT_HOME}/bin/ant /usr/bin/ant; rm -rf apache-ant-${ANT_VER}-bin.zip
 
+
+RUN yum -y install gcc gcc-c++ make
+
+RUN  wget http://10.49.2.235/tarfiles/curl-7.57.0.tar.gz && \
+        tar -xvf curl-7.57.0.tar.gz && \
+        cd curl-7.57.0 && \
+        ./configure && \
+        make && make install
+
+RUN curl --version
+
+
 #Install correct version of Ruby
-RUN curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -
-RUN curl -L get.rvm.io | bash -s stable
+RUN curl -vsSL https://rvm.io/mpapis.asc | gpg2 --import -
+RUN curl -vL get.rvm.io | bash -s stable
 RUN source /etc/profile.d/rvm.sh
 RUN /bin/bash -l -c "rvm requirements"
 RUN /bin/bash -l -c "rvm install ruby 1.9.3"
