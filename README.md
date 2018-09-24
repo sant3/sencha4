@@ -8,6 +8,7 @@ Contains version for execute sencha command/compass and ant and java.
 * ruby 1.9.3
 * sencha cmd 4
 * compass
+* git 2.x
 
 These software are all installed under /opt/ folder
 

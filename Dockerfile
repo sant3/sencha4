@@ -18,6 +18,9 @@ ENV SENCHA_HOME=/opt/Sencha/Cmd
 #Add to PATH variable
 ENV PATH $PATH:${JAVA_HOME}/bin:${SENCHA_HOME}
 
+#Update git repo
+RUN yum install http://opensource.wandisco.com/centos/6/git/x86_64/wandisco-git-release-6-1.noarch.rpm
+
 RUN yum -y update; yum -y install \
 	unzip wget curl tar git \
 	openssl-devel bzip2 && yum clean all
