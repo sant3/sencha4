@@ -4,6 +4,7 @@ MAINTAINER Sante Paciello <essebyte@gmail.com>
 
 #Config vars
 ENV JAVA_VER=7u80
+
 ENV ANT_VER=1.9.3
 ENV RUBY_MAJOR=1.9
 ENV RUBY_VERSION=1.9.3-p550
@@ -14,6 +15,7 @@ ENV ANT_HOME=/opt/ant
 ENV JAVA_HOME=/opt/java
 ENV GEM_HOME=/usr/local/bundle
 ENV SENCHA_HOME=/opt/Sencha/Cmd
+ENV JAVA8_HOME=/opt/java8
 
 #Add to PATH variable
 ENV PATH $PATH:${JAVA_HOME}/bin:${SENCHA_HOME}
@@ -30,6 +32,12 @@ RUN wget http://10.49.2.235/tarfiles/jdk-7u80-linux-x64.tar.gz && \
 	tar -xvf jdk-${JAVA_VER}-linux-x64.tar.gz && \
 	rm jdk*.tar.gz && \
 	mv jdk* ${JAVA_HOME}
+
+# Install Oracle Java8 - BIN
+RUN wget http://10.49.2.235/tarfiles/jdk-8u172-linux-x64.tar.gz && \
+	tar -xvf jdk-8u172-linux-x64.tar.gz && \
+	rm jdk*.tar.gz && \
+	mv jdk* ${JAVA8_HOME}
 
 #Install ANT
 RUN wget http://archive.apache.org/dist/ant/binaries/apache-ant-${ANT_VER}-bin.zip; \
