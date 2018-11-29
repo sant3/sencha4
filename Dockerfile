@@ -3,7 +3,7 @@ FROM centos:centos6
 MAINTAINER Sante Paciello <essebyte@gmail.com>
 
 #Config vars
-ENV JAVA_VER=8u172
+ENV JAVA_VER=7u80
 ENV ANT_VER=1.9.3
 ENV RUBY_MAJOR=1.9
 ENV RUBY_VERSION=1.9.3-p550
@@ -25,8 +25,8 @@ RUN yum -y update; yum -y install \
 	unzip wget curl tar git \
 	openssl-devel bzip2 && yum clean all
 
-# Install Oracle Java8 - BIN
-RUN wget http://10.49.2.235/tarfiles/jdk-8u172-linux-x64.tar.gz && \
+# Install Oracle Java7 - BIN
+RUN wget http://10.49.2.235/tarfiles/jdk-7u80-linux-x64.tar.gz && \
 	tar -xvf jdk-${JAVA_VER}-linux-x64.tar.gz && \
 	rm jdk*.tar.gz && \
 	mv jdk* ${JAVA_HOME}
